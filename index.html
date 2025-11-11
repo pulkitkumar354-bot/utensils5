@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZENITH ENTERPRISES - Excellence in Commerce</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: white;
+        }
+
+        .top-bar {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 8px 16px;
+            font-size: 13px;
+        }
+
+        .top-bar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .top-bar-left {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .nav {
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text p {
+            font-size: 11px;
+            color: #64748b;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-links button {
+            padding: 8px 24px;
+            background: none;
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            color: #64748b;
+            transition: all 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links button:hover {
+            color: #0f172a;
+        }
+
+        .nav-links button.active {
+            color: #0f172a;
+            border-bottom: 2px solid #0f172a;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu button {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            color: #64748b;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu button:hover,
+        .mobile-menu button.active {
+            background: #0f172a;
+            color: white;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 80px 16px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: #94a3b8;
+            margin-bottom: 16px;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .hero-line {
+            width: 96px;
+            height: 4px;
+            background: white;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #cbd5e1;
+            margin-bottom: 32px;
+            max-width: 800px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #0f172a;
+        }
+
+        .btn-primary:hover {
+            background: #f1f5f9;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #0f172a;
+        }
+
+        .stats {
+            background: #f8fafc;
+            padding: 64px 16px;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #64748b;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 16px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: #64748b;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .section-line {
+            width: 96px;
+            height: 4px;
+            background: #0f172a;
+            margin: 0 auto 32px;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 48px;
+            margin-bottom: 80px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .card {
+            border: 1px solid #e2e8f0;
+            padding: 40px;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: #0f172a;
+        }
+
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            background: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            margin-bottom: 24px;
+        }
+
+        .card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .card h4 {
+            font-size: 16px;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .card .credentials {
+            font-size: 13px;
+            color: #94a3b8;
+            font-style: italic;
+            margin-bottom: 16px;
+        }
+
+        .card p {
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        .owner-card {
+            border: 1px solid #e2e8f0;
+            padding: 40px;
+            display: flex;
+            gap: 24px;
+        }
+
+        .owner-avatar {
+            width: 96px;
+            height: 96px;
+            background: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .certification {
+            background: #f8fafc;
+            padding: 48px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .certification-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 24px;
+            font-size: 64px;
+        }
+
+        .certification h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .certification p {
+            color: #64748b;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 48px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .contact-card {
+            border: 1px solid #e2e8f0;
+            padding: 32px;
+        }
+
+        .contact-card-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .contact-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        .hours-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .hours-item span:last-child {
+            font-weight: 600;
+        }
+
+        .form {
+            border: 1px solid #e2e8f0;
+            padding: 40px;
+        }
+
+        .form h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #475569;
+            margin-bottom: 8px;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #0f172a;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #0f172a;
+            color: white;
+            padding: 16px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #1e293b;
+        }
+
+        .footer {
+            background: #0f172a;
+            color: white;
+            padding: 48px 16px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .footer h4 {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 32px;
+            text-align: center;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h2 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+
+            .owner-card {
+                flex-direction: column;
+            }
+
+            .owner-avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 28px;
+            }
+
+            .top-bar-content {
+                font-size: 11px;
+            }
+
+            .top-bar-left {
+                gap: 12px;
+            }
+
+            .content {
+                padding: 48px 16px;
+            }
+
+            .hero {
+                padding: 48px 16px;
+            }
+
+            .stats {
+                padding: 48px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="top-bar-left">
+                <span>📞 +1 (555) 123-4567</span>
+                <span>✉️ contact@zenithenterprises.com</span>
+            </div>
+            <span class="hidden" id="hours-text">Monday - Saturday: 9:00 AM - 8:00 PM</span>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo">
+                <div class="logo-icon">🏪</div>
+                <div class="logo-text">
+                    <h1>ZENITH ENTERPRISES</h1>
+                    <p>EXCELLENCE IN COMMERCE SINCE 1995</p>
+                </div>
+            </div>
+            <div class="nav-links">
+                <button class="nav-btn active" onclick="showSection('home')">HOME</button>
+                <button class="nav-btn" onclick="showSection('about')">ABOUT</button>
+                <button class="nav-btn" onclick="showSection('products')">PRODUCTS</button>
+                <button class="nav-btn" onclick="showSection('contact')">CONTACT</button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-nav-btn active" onclick="showSection('home')">HOME</button>
+        <button class="mobile-nav-btn" onclick="showSection('about')">ABOUT</button>
+        <button class="mobile-nav-btn" onclick="showSection('products')">PRODUCTS</button>
+        <button class="mobile-nav-btn" onclick="showSection('contact')">CONTACT</button>
+    </div>
+
+    <div id="home-section">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-label">ESTABLISHED 1995</div>
+                <h2>ZENITH ENTERPRISES</h2>
+                <div class="hero-line"></div>
+                <p>A premier retail establishment offering curated selections of premium products and unparalleled customer service. We maintain the highest standards in quality assurance and customer satisfaction.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="showSection('contact')">SCHEDULE CONSULTATION →</button>
+                    <button class="btn btn-secondary" onclick="showSection('about')">LEARN MORE</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stats-grid">
+                <div>
+                    <div class="stat-number">28+</div>
+                    <div class="stat-label">Years in Business</div>
+                </div>
+                <div>
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Satisfied Clients</div>
+                </div>
+                <div>
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Satisfaction Rate</div>
+                </div>
+                <div>
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Customer Support</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon">👤</div>
+                    <h3>Professional Expertise</h3>
+                    <p>Decades of combined experience in retail excellence and customer service</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏆</div>
+                    <h3>Quality Assurance</h3>
+                    <p>Rigorous standards ensuring premium products and services</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">✓</div>
+                    <h3>Client Commitment</h3>
+                    <p>Dedicated to exceeding expectations with every interaction</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="about-section" class="hidden">
+        <div class="content">
+            <div class="section-header">
+                <div class="section-label">OUR STORY</div>
+                <h2 class="section-title">About Our Organization</h2>
+                <div class="section-line"></div>
+                <p class="section-description">A premier retail establishment offering curated selections of premium products and unparalleled customer service. We maintain the highest standards in quality assurance and customer satisfaction.</p>
+            </div>
+
+            <div class="section-header">
+                <div class="section-label">LEADERSHIP</div>
+                <h3 class="section-title">Executive Team</h3>
+            </div>
+
+            <div class="grid-2">
+                <div class="owner-card">
+                    <div class="owner-avatar">SJ</div>
+                    <div>
+                        <h3>Dr. Sarah Johnson</h3>
+                        <h4>Chief Executive Officer & Co-Founder</h4>
+                        <div class="credentials">MBA, Harvard Business School</div>
+                        <p>Over 20 years of executive leadership in retail management and strategic business development. Pioneered innovative customer service frameworks adopted industry-wide.</p>
+                    </div>
+                </div>
+                <div class="owner-card">
+                    <div class="owner-avatar">MC</div>
+                    <div>
+                        <h3>Michael Chen</h3>
+                        <h4>Chief Operations Officer & Co-Founder</h4>
+                        <div class="credentials">MS Supply Chain Management, MIT</div>
+                        <p>Expertise in operational excellence and supply chain optimization. Previously held senior positions at Fortune 500 retail corporations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <div class="section-label">CAPABILITIES</div>
+                <h3 class="section-title">Professional Services</h3>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon">✓</div>
+                    <h3>Premium Product Portfolio</h3>
+                    <p>Curated selection of high-quality merchandise</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">✓</div>
+                    <h3>Corporate Solutions</h3>
+                    <p>B2B partnerships and bulk procurement services</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">✓</div>
+                    <h3>Concierge Service</h3>
+                    <p>Personalized shopping assistance</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">✓</div>
+                    <h3>White-Glove Delivery</h3>
+                    <p>Professional logistics and handling</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">✓</div>
+                    <h3>Extended Warranties</h3>
+                    <p>Comprehensive protection plans</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">✓</div>
+                    <h3>VIP Membership</h3>
+                    <p>Exclusive benefits and priority access</p>
+                </div>
+            </div>
+
+            <div class="certification">
+                <div class="certification-icon">🏆</div>
+                <h3>Certified Excellence</h3>
+                <p>Accredited by national retail associations and certified for quality management systems (ISO 9001:2015). Recognized as a trusted business partner by leading industry organizations.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="products-section" class="hidden">
+        <div class="content">
+            <div class="section-header">
+                <div class="section-label">OFFERINGS</div>
+                <h2 class="section-title">Product Divisions</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-icon">🏪</div>
+                    <h3>Technology & Electronics</h3>
+                    <p>Enterprise-grade equipment and consumer technology</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏪</div>
+                    <h3>Home & Office Furnishing</h3>
+                    <p>Premium furniture and interior solutions</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏪</div>
+                    <h3>Professional Apparel</h3>
+                    <p>Business and luxury fashion collections</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏪</div>
+                    <h3>Specialty Goods</h3>
+                    <p>Curated imports and exclusive partnerships</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact-section" class="hidden">
+        <div class="content">
+            <div class="section-header">
+                <div class="section-label">CONNECT</div>
+                <h2 class="section-title">Contact Information</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-card-icon">📍</div>
+                        <h3>Corporate Headquarters</h3>
+                        <p>Tower A, Commerce District, Business Bay, Metropolitan City 100001</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-card-icon">📞</div>
+                        <h3>Telephone</h3>
+                        <p>+1 (555) 123-4567</p>
+                        <p style="font-size: 13px; margin-top: 8px;">Available during business hours</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-card-icon">✉️</div>
+                        <h3>Email Correspondence</h3>
+                        <p>contact@zenithenterprises.com</p>
+                        <p style="font-size: 13px; margin-top: 8px;">Response within 24 business hours</p>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-card-icon">🕐</div>
+                        <h3>Operating Hours</h3>
+                        <div class="hours-list">
+                            <div class="hours-item">
+                                <span>Monday - Friday</span>
+                                <span>9:00 AM - 8:00 PM</span>
+                            </div>
+                            <div class="hours-item">
+                                <span>Saturday</span>
+                                <span>10:00 AM - 7:00 PM</span>
+                            </div>
+                            <div class="hours-item">
+                                <span>Sunday</span>
+                                <span>Closed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form">
+                    <h3>Request Information</h3>
+                    <div id="contactForm">
+                        <div class="form-group">
+                            <label class="form-label">FULL NAME *</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">EMAIL ADDRESS *</label>
+                            <input type="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">PHONE NUMBER</label>
+                            <input type="tel" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">MESSAGE *</label>
+                            <textarea class="form-textarea" required></textarea>
+                        </div>
+                        <button type="button" class="btn-submit" onclick="submitForm()">SUBMIT INQUIRY</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div>
+                    <h1 style="font-size: 24px; margin-bottom: 8px;">ZENITH ENTERPRISES</h1>
+                    <p>Excellence in Commerce Since 1995</p>
+                </div>
+                <div>
+                    <h4>CONTACT</h4>
+                    <p>+1 (555) 123-4567</p>
+                    <p>contact@zenithenterprises.com</p>
+                </div>
+                <div>
+                    <h4>LOCATION</h4>
+                    <p>Tower A, Commerce District, Business Bay, Metropolitan City 100001</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 ZENITH ENTERPRISES. All Rights Reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showSection(sectionName) {
+            var sections = ['home', 'about', 'products', 'contact'];
+            for (var i = 0; i < sections.length; i++) {
+                var element = document.getElementById(sections[i] + '-section');
+                if (element) {
+                    element.classList.add('hidden');
+                }
+            }
+            
+            var activeSection = document.getElementById(sectionName + '-section');
+            if (activeSection) {
+                activeSection.classList.remove('hidden');
+            }
+
+            var navBtns = document.querySelectorAll('.nav-btn');
+            for (var j = 0; j < navBtns.length; j++) {
+                navBtns[j].classList.remove('active');
+            }
+
+            var mobileNavBtns = document.querySelectorAll('.mobile-nav-btn');
+            for (var k = 0; k < mobileNavBtns.length; k++) {
+                mobileNavBtns[k].classList.remove('active');
+            }
+
+            var allBtns = document.querySelectorAll('[onclick*="' + sectionName + '"]');
+            for (var m = 0; m < allBtns.length; m++) {
+                allBtns[m].classList.add('active');
+            }
+
+            document.getElementById('mobileMenu').classList.remove('active');
+            window.scrollTo(0, 0);
+        }
+
+        function toggleMobileMenu() {
+            var menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
+        function submitForm() {
+            alert('Thank you for your inquiry. Our team will contact you within 24 business hours.');
+            var inputs = document.querySelectorAll('#contactForm input, #contactForm textarea');
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].value = '';
+            }
+        }
+
+        function updateHoursVisibility() {
+            var hoursText = document.getElementById('hours-text');
+            if (window.innerWidth >= 768) {
+                hoursText.classList.remove('hidden');
+            } else {
+                hoursText.classList.add('hidden');
+            }
+        }
+
+        updateHoursVisibility();
+        window.addEventListener('resize', updateHoursVisibility);
+    </script>
+</body>
+</html>
